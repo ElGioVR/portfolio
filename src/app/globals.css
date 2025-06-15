@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcf0f9;
+  --background-end: #ededed; /* Color de fondo final para modo claro */
+  --foreground: #2d133b;
+}
+
+.dark-mode {
+  --background: #000000;
+  --background-end: #0a0a0a; /* Color de fondo final para dark mode */
+  --foreground: #f4cffa;
+}
+
+@keyframes spin-bg {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin 16s linear infinite;
+}
+
+/* globals.css o tailwind.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes wave-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.text-gradient-wave {
+  background: linear-gradient(90deg, #f43f5e, #a21caf, #6366f1, #f43f5e, #a21caf, #6366f1, #f43f5e);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: wave-gradient 10s linear infinite;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}

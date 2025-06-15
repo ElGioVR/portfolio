@@ -1,0 +1,130 @@
+{
+  "main": {
+    "title1": "HOLA",
+    "title2": "SOY GIO VAZQUEZ",
+    "course": "Cursos",
+    "satisfactionRate": "Tasa de satisfacción",
+    "succesfullProjects": "Proyectos exitosos",
+    "businessTransformed": "Negocios transformados"
+  },
+  "menu": {
+    "home": "Inicio",
+    "about": "Acerca de mí",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contactar",
+    "skills": "Habilidades",
+    "experience": "Experiencia"
+  },
+  "about": {
+    "title1": "Mi increíble",
+    "title2": "Servicio en ",
+    "developer": {
+      "title": "Desarrollador",
+      "desc": "Desarrollador Full Stack con más de 3 años de experiencia en la creación de aplicaciones web dinámicas y escalables.",
+      "details":
+        "Especializado en JavaScript, TypeScript, Node.js, React, Nest.js y Next.js.Enfocado en el diseño de arquitecturas eficientes, la mejora de la experiencia del usuario y la colaboración efectiva en equipos multidisciplinarios. Apasionado por la innovación tecnológica y la optimización de procesos de desarrollo."
+    },
+    "uiux": {
+      "title": "Ui/Ux",
+      "desc": "Profesional con experiencia en colaborar estrechamente con diseñadores para crear interfaces intuitivas y centradas en el usuario.",
+      "details":
+       "Enfocado en mejorar la experiencia del usuario mediante soluciones eficientes y escalables. Comprometido con la usabilidad, la accesibilidad y la implementación de buenas prácticas de diseño en el desarrollo de aplicaciones web."
+    },
+    "designer": {
+      "title": "Diseñador",
+      "desc": "Diseñador gráfico con un enfoque en la creación de interfaces atractivas y funcionales.",
+      "details":
+        "Comprometido con el diseño de interfaces que optimicen la experiencia del usuario y se adapten a arquitecturas web escalables."
+    }
+
+  },
+  "experience": {
+    "companyGlobal": {
+      "name":"G-Global",
+      "role":"Desarrollador Full Stack",
+      "date":"Diciembre 2021 - Febrero 2025",
+      "details1": "WMS (React, Node.js, MoleculerJS, TypeScript): Desarrollo de módulos y CRUDs en arquitectura de microservicios. Refactorización de servicios con MoleculerJS y MongoDB. Aplicación de pruebas unitarias con enfoque TDD.",
+      "details2": "Globalization (React, NextJS, TypeScript, GraphQL, NestJS): Desarrollo de funcionalidades bajo arquitectura monolito. Implementación de APIs GraphQL y NestJS. Pruebas unitarias y uso de MongoDB. "
+    },
+        "companyGroup": {
+          "name":"JD Group",
+      "role":"Desarrollador (Practicante)",
+      "date":"Marzo 2021 - Noviembre 2021 ",
+      "details1": "Participación en el rediseño de la plataforma: diseño y maquetación del menú lateral y dashboards administrativos. "
+    },
+    "title": "Experiencia laboral",
+    "description": "He colaborado con empresas de primer nivel para construir aplicaciones web listas para producción y sistemas escalables."
+  },
+   "skills": {
+    "title": "Habilidades",
+    "webDesign": {
+      "title": "Diseño Web",
+      "description": "UI/UX, Responsive, Wireframing, Investigación"
+    },
+    "frontend": {
+      "title": "Frontend",
+      "description": "JavaScript, React, Next.js, CSS3, MUI, Tailwind, Astro"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "Node.js, MongoDB, Express, Vercel, TypeScript, Next.js, GraphQL, Python, MySql, SQL Server"
+    },
+    "softSkills": {
+      "title": "Habilidades Blandas",
+      "description": "Comunicación, Trabajo en equipo, Liderazgo, Compromiso"
+    },
+    "tools": {
+      "title": "Herramientas",
+      "description": "Figma, Git, NPM, Postman, EsLint"
+    },
+    "platforms": {
+      "title": "Plataformas",
+      "description": "Vercel, Firebase, Supabase, Railway, S3"
+    },
+    "languages": {
+      "title": "Idiomas",
+      "description": "Español, Inglés"
+    },
+    "extra": {
+      "title": "Extra",
+      "description": "Scrum, Kanban, Agile, Trello, Jira"
+    }
+  },
+    "contact": {
+    "title": "Solicita una cotización.",
+    "subtitle": "Todo comienza aquí.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "selectBudget": "Selecciona presupuesto",
+    "budget1": "Menos de $1,000",
+    "budget2": "$1,000 - $5,000",
+    "budget3": "$5,000 - $10,000",
+    "budget4": "Más de $10,000",
+    "noForm": "¿Odiás los formularios?",
+    "send": "Enviar mensaje",
+    "sending": "Enviando..."
+  },
+  "contactSection": {
+    "titleLine1": "¿Quieres crear algo",
+    "titleLine2": "increíble?",
+    "contactBtn": "¡Contáctame!"
+  },
+    "thankyouContact": {
+    "title": "¡Gracias por contactarme!",
+    "message": "Haremos cosas chingonas 🚀"
+  },
+  "footer": {
+    "description": "Diseñador digital e ilustrador freelance, actualmente radicado en Berlín",
+    "madeBy": "Hecho por",
+    "with": "con"
+  },
+  "visitCounter": {
+    "uniqueVisits": "Visitas únicas",
+    "loading": "Cargando..."
+  }
+
+
+
+}

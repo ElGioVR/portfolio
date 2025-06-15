@@ -1,0 +1,126 @@
+{
+  "main": {
+    "title1": "HI THERE",
+    "title2": "I'M GIO VAZQUEZ",
+    "course": "Course",
+    "satisfactionRate": "Satisfaction Rate",
+    "succesfullProjects": "Succesfull projects",
+    "businessTransformed": "Business transformed"
+  },
+  "menu": {
+    "home": "Home",
+    "about": "About me",
+    "portfolio": "Portfolio",
+    "experience": "Experience",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "about": {
+    "title1": "My Amazing",
+    "title2": "Service in",
+    "developer": {
+      "title": "Developer",
+      "desc": "Full Stack Developer with over 3 years of experience in building dynamic and scalable web applications.",
+      "details":
+        "Specialized in JavaScript, TypeScript, Node.js, React, Nest.js, and Next.js. Focused on designing efficient architectures, enhancing user experience, and collaborating effectively in multidisciplinary teams. Passionate about tech innovation and optimizing development processes."
+    },
+    "uiux": {
+      "title": "UI/UX",
+      "desc": "Professional with experience collaborating closely with designers to create intuitive and user-centered interfaces.",
+      "details":
+        "Focused on improving user experience through efficient and scalable solutions. Committed to usability, accessibility, and the implementation of design best practices in web application development."
+    },
+    "designer": {
+      "title": "Designer",
+      "desc": "Graphic designer with a focus on creating attractive and functional interfaces.",
+      "details":
+        "Dedicated to designing interfaces that optimize user experience and adapt to scalable web architectures."
+    }
+   
+  },
+    "experience": {
+    "companyGlobal": {
+      "name":"G-Global",
+      "role": "Full Stack Developer",
+      "date": "December 2021 - February 2025",
+      "details1": "WMS (React, Node.js, MoleculerJS, TypeScript): Developed modules and CRUDs using microservice architecture. Refactored services with MoleculerJS and MongoDB. Applied unit testing with a TDD approach.",
+      "details2": "Globalization (React, NextJS, TypeScript, GraphQL, NestJS): Developed features under monolithic architecture. Implemented GraphQL and NestJS APIs. Unit testing and MongoDB usage."
+    },
+    "companyGroup": {
+       "name":"JD Group",
+      "role": "Developer (Intern)",
+      "date": "March 2021 - November 2021",
+      "details1": "Participated in the platform redesign: designed and built the side menu and administrative dashboards."
+    },
+    "title": "Work Experience",
+    "description": "I've collaborated with top-tier companies to build production-ready web applications and scalable systems."
+  },
+   "skills": {
+    "title": "Skills",
+    "webDesign": {
+      "title": "Web Design",
+      "description": "UI/UX, Responsive, Wireframing, Research"
+    },
+    "frontend": {
+      "title": "Frontend",
+      "description": "JavaScript, React, Next.js, CSS3, MUI, Tailwind, Astro"
+    },
+    "backend": {
+      "title": "Backend",
+      "description": "Node.js, MongoDB, Express, Vercel, TypeScript, Next.js, GraphQL, Python, MySql, SQL Server"
+    },
+    "softSkills": {
+      "title": "Soft Skills",
+      "description": "Communication, Teamwork, Leadership, Commitment"
+    },
+    "tools": {
+      "title": "Tools",
+      "description": "Figma, Git, NPM, Postman, EsLint"
+    },
+    "platforms": {
+      "title": "Platforms",
+      "description": "Vercel, Firebase, Supabase, Railway, S3"
+    },
+    "languages": {
+      "title": "Languages",
+      "description": "Spanish, English"
+    },
+    "extra": {
+      "title": "Extra",
+      "description": "Scrum, Kanban, Agile, Trello, Jira"
+    }
+  },
+  "contact": {
+    "title": "Get a quote.",
+    "subtitle": "It all starts here.",
+    "name": "Name",
+    "email": "Email address",
+    "message": "Message",
+    "selectBudget": "Select budget",
+    "budget1": "Less than $1,000",
+    "budget2": "$1,000 - $5,000",
+    "budget3": "$5,000 - $10,000",
+    "budget4": "More than $10,000",
+    "noForm": "Hate contact forms?",
+    "send": "Send message",
+    "sending": "Sending..."
+  },
+      "contactSection": {
+    "titleLine1": "Want to create something",
+    "titleLine2": "awesome?",
+    "contactBtn": "Contact me!"
+  },
+  "thankyouContact": {
+    "title": "Thanks for reaching out!",
+    "message": "We're going to build amazing things 🚀"
+  },
+    "footer": {
+    "description": "A freelance digital designer and illustrator currently based in Berlin",
+    "madeBy": "Made by",
+    "with": "with"
+  },
+    "visitCounter": {
+    "uniqueVisits": "Unique visits",
+    "loading": "Loading..."
+  }
+  }
