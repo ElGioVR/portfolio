@@ -92,7 +92,7 @@ export default function AbouthMe({ darkMode }: { darkMode?: boolean }) {
           download={i18n.language === "es" ? "CV-GioVazquez-ES.pdf" : "CV-GioVazquez-EN.pdf"}
           className={`font-semibold px-6 py-2 rounded-lg shadow transition mx-auto md:mx-0 block text-center md:inline-block ${
             isDark
-              ? "bg-white text-[#231d31] hover:bg-[#faf2fc]"
+              ? "bg-[#f6daf8] text-[#231d31] hover:bg-[#faf2fc]"
               : "bg-[#a472a8] text-white hover:bg-[#a472a8]"
           }`}
         >

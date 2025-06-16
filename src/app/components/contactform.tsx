@@ -170,7 +170,7 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
                 disabled={loading}
                 className={`px-6 py-3 rounded-lg font-semibold shadow transition-all flex items-center gap-2 ${
                   isDark
-                    ? "bg-white text-[#231d31] hover:bg-[#faf2fc]"
+                    ? "bg-[#f6daf8] text-[#231d31] hover:bg-[#faf2fc]"
                     : "bg-[#231d31] text-white hover:bg-[#a472a8]"
                 } ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
