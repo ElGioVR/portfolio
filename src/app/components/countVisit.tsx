@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 import {
   doc,
   getDoc,
@@ -9,6 +9,7 @@ import {
   increment,
   setDoc,
 } from 'firebase/firestore';
+import { signInAnonymously } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 
 interface VisitCounterProps {
@@ -21,33 +22,43 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
 
   useEffect(() => {
     const fetchAndUpdateCount = async () => {
-      const alreadyVisited = localStorage.getItem('visited');
-      const alreadyConfetty = localStorage.getItem('confetty');
-      const counterRef = doc(db, 'analytics', 'visitCounter');
+      try {
+        await signInAnonymously(auth);
+        const alreadyVisited = localStorage.getItem('visited');
+        const alreadyConfetty = localStorage.getItem('confetty');
+        const counterRef = doc(db, 'analytics', 'visitCounter');
+        let newCount = 0;
 
-      if (!alreadyVisited) {
-        localStorage.setItem('visited', 'true');
+        if (!alreadyVisited) {
+          localStorage.setItem('visited', 'true');
 
-        const docSnap = await getDoc(counterRef);
-        if (!docSnap.exists()) {
-          await setDoc(counterRef, { count: 1 });
+          const docSnap = await getDoc(counterRef);
+          if (!docSnap.exists()) {
+            await setDoc(counterRef, { count: 1 });
+            newCount = 1;
+          } else {
+            const prevCount = docSnap.data().count || 0;
+            await updateDoc(counterRef, {
+              count: increment(1),
+            });
+            newCount = prevCount + 1;
+          }
+
+          if (!alreadyConfetty) {
+            setTimeout(() => {
+              localStorage.setItem('confetty', 'true');
+            }, 700);
+          }
         } else {
-          await updateDoc(counterRef, {
-            count: increment(1),
-          });
+          const docSnap = await getDoc(counterRef);
+          if (docSnap.exists()) {
+            newCount = docSnap.data().count;
+          }
         }
-
-        if (!alreadyConfetty) {
-          setTimeout(() => {
-            localStorage.setItem('confetty', 'true');
-          }, 700);
-        }
-      }
-
-      const docSnap = await getDoc(counterRef);
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        setCount(data.count);
+        setCount(newCount);
+      } catch (error) {
+        console.error('Error al actualizar o leer el contador de visitas:', error);
+        setCount(null);
       }
     };
 
