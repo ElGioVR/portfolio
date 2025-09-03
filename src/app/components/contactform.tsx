@@ -161,8 +161,8 @@ export default function GetAQuoteSection({ darkMode }: GetAQuoteSectionProps) {
                 }`}
               >
                 {t("contact.noForm")}{" "}
-                <a href="mailto:hello@significa.co" className="underline">
-                  hello@gioprofile.co
+                <a href="mailto:giovazquezrangel@gmail.com" className="underline">
+                  giovazquezrangel@gmail.com
                 </a>
               </span>
               <button
