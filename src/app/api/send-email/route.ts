@@ -1,4 +1,3 @@
-
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { format, toZonedTime } from 'date-fns-tz';
@@ -7,44 +6,22 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   const { name, email, message, budget, lang, visit } = await req.json();
-  let geo: {
-    city?: string;
-    country_name?: string;
-    region?: string;
-    latitude?: string | number;
-    longitude?: string | number;
-  } = {};
   try {
     let visitEmail = {};
     let adminEmail = {};
     const tz = 'America/Tijuana';
     const date = visit?.timestamp ? new Date(visit.timestamp) : new Date();
     const tijuanaTime = format(toZonedTime(date, tz), 'yyyy-MM-dd HH:mm:ss', { timeZone: tz });
-     try {
-        // Puedes usar ipapi.co, ipinfo.io, ipgeolocation.io, etc.
-        const res = await fetch("https://ipapi.co/json/");
-        geo = await res.json();
-      } catch {
-        geo = {};
-      }
-
-      // Mezcla los datos de geolocalización con el payload de visita
-      const visitData = {
-        ...visit,
-        city: geo?.city ?? '',
-        country: geo?.country_name ?? '',
-        state: geo?.region ?? '',
-        lat: geo?.latitude ?? '',
-        lon: geo?.longitude ?? '',
-        tijuana_time: tijuanaTime,
-      };
+    const visitData = {
+      ...visit,
+      tijuana_time: tijuanaTime,
+    };
     if (visit) {
-      // 1. Enviar correo al administrador por cotización
       visitEmail = await resend.emails.send({
-  from: "Gio Form <onboarding@resend.dev>",
-  to: ["giovanniantoniovazquezrangel@gmail.com"],
-  subject: `🌎 Nueva visita — ${visitData.city || "Ubicación desconocida"}`,
-  html: `
+        from: "Gio Form <onboarding@resend.dev>",
+        to: ["giovanniantoniovazquezrangel@gmail.com"],
+        subject: `🌎 Nueva visita — ${visitData.city || "Ubicación desconocida"}`,
+        html: `
     <div style="max-width:600px;margin:0 auto;padding:0;border-radius:16px;font-family:'Segoe UI',Arial,sans-serif;background:#fff;box-shadow:0 2px 12px #e0e0e0;">
       <div style="background: linear-gradient(90deg, #a537e0 0%, #f43f5e 100%); padding:32px 20px; text-align:center; color:white; border-radius:16px 16px 0 0;">
         <span style="font-size:38px;">🌎</span>
@@ -84,15 +61,15 @@ export async function POST(req: Request) {
       </div>
     </div>
   `,
-});
-    } else {
-      // 2. Registrar visita y enviar correo si existe el objeto visit
+      });
+    }
+    if (name && email && message && budget) {
       adminEmail = await resend.emails.send({
-      from: "Gio Form <onboarding@resend.dev>",
-      to: ["giovanniantoniovazquezrangel@gmail.com"],
-      subject: `💻 Nueva solicitud de cotización de ${name}`,
-      replyTo: email,
-      html: `
+        from: "Gio Form <onboarding@resend.dev>",
+        to: ["giovanniantoniovazquezrangel@gmail.com"],
+        subject: `💻 Nueva solicitud de cotización de ${name}`,
+        replyTo: email,
+        html: `
         <div style="max-width:600px;margin:0 auto;padding:0;border:1px solid #e0e0e0;border-radius:8px;font-family:sans-serif;background-color:#ffffff;overflow:hidden;">
           <div style="background: linear-gradient(135deg, #7f00ff, #e100ff); padding:40px 20px; text-align:center; color:white; position:relative;">
             <h1 style="margin:0; font-size:28px; letter-spacing:2px;">💼 CHAMBA</h1>
@@ -123,12 +100,10 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-    });
+      });
     }
-    // 3. Determinar idioma del cliente
     const isSpanish = lang === "es";
 
-    // 4. HTML del email de confirmación
     const confirmationHtml = isSpanish
       ? `
         <div style="max-width:600px;margin:0 auto;padding:0;border:1px solid #e0e0e0;border-radius:8px;font-family:'Segoe UI', sans-serif;background-color:#ffffff;overflow:hidden;">
@@ -175,17 +150,18 @@ export async function POST(req: Request) {
         </div>
       `;
 
-    // 5. Enviar confirmación al cliente
-    const confirmationEmail = await resend.emails.send({
-      from: "Gio Form <onboarding@resend.dev>",
-      to: [email],
-      subject: isSpanish
-        ? "🎉 ¡Hemos recibido tu solicitud!"
-        : "🎉 We’ve received your request!",
-      html: confirmationHtml,
-    });
-
-    return NextResponse.json({ success: true, adminEmail, confirmationEmail, visitEmail });
+    // Enviar confirmación al cliente
+    if (email) {
+      await resend.emails.send({
+        from: "Gio Form <onboarding@resend.dev>",
+        to: [email],
+        subject: isSpanish
+          ? "🎉 ¡Hemos recibido tu solicitud!"
+          : "🎉 We’ve received your request!",
+        html: confirmationHtml,
+      });
+    }
+    return NextResponse.json({ success: true, adminEmail, visitEmail });
   } catch (error) {
     console.error("Error al enviar correos:", error);
     return NextResponse.json({ success: false, error }, { status: 500 });

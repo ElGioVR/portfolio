@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { db, auth } from '../firebase';
 import {
   doc,
@@ -19,8 +19,12 @@ interface VisitCounterProps {
 export default function VisitCounter({ darkMode }: VisitCounterProps) {
   const [count, setCount] = useState<number | null>(null);
   const { t } = useTranslation();
+  const sentRef = useRef(false);
 
   useEffect(() => {
+    if (sentRef.current) return;
+    sentRef.current = true;
+
     const fetchAndUpdateCount = async () => {
       try {
         await signInAnonymously(auth);
@@ -28,20 +32,38 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
         const alreadyConfetty = localStorage.getItem('confetty');
         const counterRef = doc(db, 'analytics', 'visitCounter');
         let newCount = 0;
+        interface GeoLocation {
+          city?: string;
+          country_name?: string;
+          region?: string;
+          latitude?: number;
+          longitude?: number;
+        }
+        let geo: GeoLocation = {};
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          geo = await res.json();
+        } catch {
+          geo = {};
+        }
 
-        // Datos para el email de visita
         const visitPayload = {
           time_local: new Date().toLocaleString(),
           timestamp: Date.now(),
           location_source: 'browser',
           userAgent: navigator.userAgent,
-          // Puedes agregar más datos si tienes geolocalización
+          city: geo.city,
+          country: geo.country_name,
+          state: geo.region,
+          lat: geo.latitude,
+          lon: geo.longitude,
         };
+
+        const docSnap = await getDoc(counterRef);
 
         if (!alreadyVisited) {
           localStorage.setItem('visited', 'true');
 
-          const docSnap = await getDoc(counterRef);
           if (!docSnap.exists()) {
             await setDoc(counterRef, { count: 1 });
             newCount = 1;
@@ -53,8 +75,7 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
             newCount = prevCount + 1;
           }
 
-          // Llamada al endpoint para enviar email de visita
-          fetch('/api/send-email', {
+          await fetch('/api/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ visit: visitPayload }),
@@ -66,7 +87,6 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
             }, 700);
           }
         } else {
-          const docSnap = await getDoc(counterRef);
           if (docSnap.exists()) {
             newCount = docSnap.data().count;
           }
