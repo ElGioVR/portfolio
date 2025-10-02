@@ -29,6 +29,15 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
         const counterRef = doc(db, 'analytics', 'visitCounter');
         let newCount = 0;
 
+        // Datos para el email de visita
+        const visitPayload = {
+          time_local: new Date().toLocaleString(),
+          timestamp: Date.now(),
+          location_source: 'browser',
+          userAgent: navigator.userAgent,
+          // Puedes agregar más datos si tienes geolocalización
+        };
+
         if (!alreadyVisited) {
           localStorage.setItem('visited', 'true');
 
@@ -43,6 +52,13 @@ export default function VisitCounter({ darkMode }: VisitCounterProps) {
             });
             newCount = prevCount + 1;
           }
+
+          // Llamada al endpoint para enviar email de visita
+          fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ visit: visitPayload }),
+          });
 
           if (!alreadyConfetty) {
             setTimeout(() => {
