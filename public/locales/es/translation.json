@@ -23,7 +23,7 @@
       "title": "Desarrollador",
       "desc": "Desarrollador Full Stack con más de 3 años de experiencia en la creación de aplicaciones web dinámicas y escalables.",
       "details":
-        "Especializado en JavaScript, TypeScript, Node.js, React, Nest.js y Next.js.Enfocado en el diseño de arquitecturas eficientes, la mejora de la experiencia del usuario y la colaboración efectiva en equipos multidisciplinarios. Apasionado por la innovación tecnológica y la optimización de procesos de desarrollo."
+        "Especializado en JavaScript, TypeScript, Node.js, React, Nest.js y Next.js. Enfocado en el diseño de arquitecturas eficientes, la mejora de la experiencia del usuario y la colaboración efectiva en equipos multidisciplinarios. Apasionado por la innovación tecnológica y la optimización de procesos de desarrollo."
     },
     "uiux": {
       "title": "Ui/Ux",
@@ -68,7 +68,7 @@
     },
     "backend": {
       "title": "Backend",
-      "description": "Node.js, MongoDB, Express, Vercel, TypeScript, Next.js, GraphQL, Python, MySql, SQL Server"
+      "description": "Node.js, MongoDB, Express, Vercel, TypeScript, Nest.js, GraphQL, Python, MySql, SQL Server"
     },
     "softSkills": {
       "title": "Habilidades Blandas",

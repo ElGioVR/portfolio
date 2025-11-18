@@ -24,9 +24,9 @@ const experiences: ExperienceItem[] = [
       "experience.companyGlobal.details2",
     ],
     technologies: [
-      "React", "Node.js", "Express", "Next.js", "TypeScript",
+      "React", "Node.js", "Express", "Nest.js", "TypeScript",
       "Tailwind CSS", "JavaScript", "MUI", "Figma", "Adobe XD",
-      "GraphQL", "Mongo DB"
+      "GraphQL", "Mongo DB", "Next.js"
     ],
   },
   {
@@ -38,7 +38,6 @@ const experiences: ExperienceItem[] = [
   },
 ];
 
-// 🎨 Paletas de colores suaves para fondo y texto
 const pastelColorsLight = [
   { bg: "#ffe4e6", text: "#9d174d" },
   { bg: "#e0f2fe", text: "#0369a1" },
@@ -61,7 +60,6 @@ const TimelineExperience = ({ darkMode }: ExperienceProps) => {
   const [selected, setSelected] = useState(0);
   const { t } = useTranslation();
 
-  // 🎲 Mapeo aleatorio de tecnologías a colores
   const techColorMap = useMemo(() => {
     const colors = darkMode ? pastelColorsDark : pastelColorsLight;
     const map: Record<string, { bg: string; text: string }> = {};
